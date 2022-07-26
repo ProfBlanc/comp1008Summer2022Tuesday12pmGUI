@@ -1,5 +1,9 @@
 package ca.georgiancollege.cppr.comp1008.comp1008summer2022thursdays12pmgui;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class RegisterModel {
 
     private String username, password, confirmPassword;
@@ -9,9 +13,10 @@ public class RegisterModel {
         this.password = password;
         this.confirmPassword = confirmPassword;
     }
-    public void process(){
+    public void process() throws Exception{
         determineIfFieldsAreAtLeastFiveCharacters();
         ensurePasswordsMatch();
+        addUserToList();
     }
     private void determineIfFieldsAreAtLeastFiveCharacters(){
 
@@ -25,5 +30,20 @@ public class RegisterModel {
         if(!password.equals(confirmPassword))
             throw new IllegalArgumentException("Passwords do not match");
     }
+    void addUserToList() throws Exception{
+
+        Path file = Paths.get("src\\main\\resources\\ca\\georgiancollege\\cppr\\comp1008\\comp1008summer2022thursdays12pmgui\\data\\" + username + ".txt");
+
+        try {
+            Files.createFile(file);
+            Files.writeString(file, password);
+        }
+        catch (Exception e){
+            System.err.println(e);
+            throw new Exception("Could not write to file");
+        }
+
+    }
+
 
 }

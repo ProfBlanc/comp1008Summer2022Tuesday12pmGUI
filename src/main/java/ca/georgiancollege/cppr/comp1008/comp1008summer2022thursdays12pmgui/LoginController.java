@@ -60,7 +60,7 @@ public class LoginController {
         try{
             model.process();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Congrats! You may enter the site");
+            alert.setContentText("Congrats, "+ fieldUsername.getText()+"! You may enter the site");
             alert.setTitle("Wahoo!");
             alert.show();
             clearFields();

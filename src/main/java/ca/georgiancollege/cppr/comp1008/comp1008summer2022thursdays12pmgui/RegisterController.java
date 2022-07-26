@@ -6,6 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
 public class RegisterController {
 
     @FXML
@@ -53,6 +58,7 @@ public class RegisterController {
             labelError.setText(e.getMessage());
         }
     }
+
     void resetFields(){
         fieldUsername.setText("");
         fieldPassword.setText("");
@@ -61,6 +67,9 @@ public class RegisterController {
     }
     @FXML
     void initialize(){
+        Path p = Paths.get(".");
+        System.out.println(p.toAbsolutePath().toString());
+
         resetFields();
 
     }
