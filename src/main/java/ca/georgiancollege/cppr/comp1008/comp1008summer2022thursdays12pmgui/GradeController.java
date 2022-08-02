@@ -25,9 +25,7 @@ public class GradeController {
             labelLetter.setText(model.getLetter());
         }
         catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error!");
-            alert.setContentText(e.getMessage());
+            Alert alert = Utlities.createAlert("Error", "Error!", e.getMessage());
             alert.show();
             reset();
         }

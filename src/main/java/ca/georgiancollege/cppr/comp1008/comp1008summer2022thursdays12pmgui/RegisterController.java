@@ -43,15 +43,11 @@ public class RegisterController {
         model.setFields(fieldUsername.getText(), fieldPassword.getText(), fieldConfirmPassword.getText());
         try{
             model.process();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Good Job");
-            alert.setContentText("Thank you for registering");
+            Alert alert = Utlities.createAlert("confirm", "Good Job", "Thank you for registering");
             alert.show();
             resetFields();
 
-            Node node = (Node)event.getSource();
-            Stage stage = (Stage)node.getScene().getWindow();
-            stage.close();
+           Utlities.closeWindow(event);
 
         }
         catch (Exception e){

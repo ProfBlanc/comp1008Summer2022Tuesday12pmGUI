@@ -59,9 +59,7 @@ public class LoginController {
         model.setValues(fieldUsername.getText(), fieldPassword.getText());
         try{
             model.process();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Congrats, "+ fieldUsername.getText()+"! You may enter the site");
-            alert.setTitle("Wahoo!");
+            Alert alert = Utlities.createAlert("info", "Wahoo", "Congrats, "+ fieldUsername.getText()+"! You may enter the site");
             alert.show();
             clearFields();
         }
@@ -80,12 +78,7 @@ public class LoginController {
         //labelError.setText(fieldUsername.getText());
 
     try {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("register-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setTitle("Register Example");
-        stage.setScene(scene);
-        stage.show();
+        Utlities.openWindow("register", "Registration Example");
     }
     catch (Exception e){
         labelError.setText("Unable to able Register view");
